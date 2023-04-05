@@ -1,0 +1,386 @@
+@import '../../assets/main.scss';
+
+section {
+    
+
+    & article {
+        min-height: 200vh;
+        width: 100%;
+        background: $bg;
+        padding: 1rem;
+
+        img {
+            all: unset;
+        }
+
+        & h2 {
+            margin-top: 1.7rem;
+            color: $blue;
+            font-size: 2rem;
+        }
+
+        & .users-info {
+            display: grid;
+            grid-template-columns: repeat(4, 15rem);
+            gap: 1.3rem;
+            max-width: 100%;
+            overflow-x: scroll;
+            margin-top: 1.5rem;
+            
+           &::-webkit-scrollbar {
+                visibility: hidden;
+           }
+
+           & > div {
+                height: 10.2rem;
+                padding: .8rem;
+                white-space: nowrap;
+                padding-inline: 1.5rem;
+                background: white;
+
+                & h3 {
+                    margin-top: 1rem;
+                    font-size: 1.2rem;
+                    text-transform: uppercase;
+                }
+
+                & h2 {
+                    margin-block: .8rem;
+                    font-size: 1.8rem;
+                    
+                }
+
+                & .savings {
+                    width: 15.2rem;
+                }
+            } 
+            
+            & > div figure, .users-info > div figure img{
+                height: 2rem;
+                width: 2rem;
+                
+            }
+
+            
+
+            
+        
+        }
+
+        & .table-sec {
+            position: relative;
+        }
+
+        & .table {
+            
+            overflow-x: scroll;
+            min-width: 100%;
+            max-height: 38rem;
+            overflow-y: visible;
+            margin-top: 3rem;
+            background: white;
+            & table {
+                width: 100%;
+            }
+        }
+        
+        tr {
+            gap: 0rem;
+        }
+
+        th {
+            padding: 1rem;
+            min-width: 9rem;
+            white-space: nowrap;
+            font-size: 1rem;
+            
+        }
+        
+        th div {
+            display: flex;
+            gap: .9rem;
+            justify-content: center;
+        }
+
+        th img {
+            margin-left: .8rem;
+            all: unset;
+        }
+        
+        td {
+            text-align: center;
+            white-space: nowrap;
+            font-size: 1rem;
+            padding-block: .8rem;
+            padding-inline: 1rem;
+            
+        }
+
+        .status-c {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .8rem;
+            width: 8.5rem;
+            height: 2rem;
+            
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            font-weight: 500;
+            height: 2rem;
+            color: $text;
+            background: $light-text;
+            border-radius: 1rem;
+        }
+
+        .g {
+            color: $s-green;
+            background: $s-bg;
+        }
+        
+        .r {
+            width: 70%;
+            color: $red;
+            background: $light-red;
+        }
+        
+        .y {
+            color: $yellow;
+            background: $light-yellow;
+        }
+
+        .filter {
+            position: absolute;
+            display: block;
+            flex-direction: column;
+            top: 3rem;
+            left: 1rem;
+            background: white;
+            padding: .5rem;
+            padding-inline: .8rem;
+            width: 15rem;
+            &[data-open="false"] {
+               display: none;
+           }
+            
+        }
+        
+        .filter input, .filter select {
+            outline: none;
+            height: 2rem;
+            width: 100%;
+            border: 1px solid $text;
+            margin-top: .6rem;
+            margin-bottom: 1rem;
+            color: $text;
+            
+            border-radius: .3rem;
+            padding: .5rem;
+        }
+        
+        .filter .buttons {
+            display: flex;
+            width: 100%;
+            margin-top: 1.2rem;
+            justify-content: center;
+            gap: 2rem;
+            border-radius: .6rem;
+            
+        }
+        
+        .buttons > button {
+            height: 2.5rem;
+            width: 5rem;
+            outline: none;
+            border: none;
+            border-radius: .5rem;
+            background: lavender;
+        }
+        
+        .buttons button:nth-child(1) {
+            border: 1px solid $text;
+            background: transparent;
+        }
+        
+        .buttons button:nth-child(2){
+            background: $green;
+            color: white;
+        }
+
+        & .modal {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 80%;
+            top: 100px;
+            gap: .7rem;
+            width: 10rem;
+            padding: 1rem;
+            background: white;
+            border: 1px solid $light-text;
+            box-shadow: 3px 5px 20px rgb(0 0 0 /.04);
+            border-radius: 4px;
+
+            &[data-open="false"] {
+                display: none;
+            }
+
+            & > .m-content {
+                display: flex;
+                gap: .7rem;
+            }
+        }
+
+        & .paginate {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            
+            justify-content: space-between;
+            
+        }
+
+        & .show {
+            & select {
+                margin-inline: .5rem;
+                width: 3rem;
+                background: $light-blue;
+                font-weight: 600;
+                height: 1.5rem;
+                border: none;
+                border-radius: .2rem;
+                color: $blue;
+            }
+        }
+        
+        .paginator {
+            margin-top: 0rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 1rem;
+            width: 70%;
+            height: 2rem;
+            
+            & .p-btn{
+                background: $light-blue;
+
+            }
+
+            & li {
+                list-style: none;
+            }
+
+            & .prev, & .next, & .p-btn {
+                display: grid;
+                place-content: center;
+                height: 1.5rem;
+                color: $blue;
+                font-weight: 800;
+                
+                border-radius: 4px;
+                width: 3rem;
+                height: 2rem;
+
+            }
+
+            & .pages {
+                display: flex;
+                justify-content: space-between;
+                margin-block: 0rem;
+                
+                
+
+                list-style-type: none;
+                justify-content: center;
+                align-items: center;
+            }
+
+            & .active {
+                color: $blue;
+                font-weight: 800;
+            }
+        }
+        
+        
+    }
+}
+@media screen and (max-width: 600px) {
+    section {
+        
+        & article {
+            .paginate {
+                flex-direction: column;
+                gap: 1.2rem;
+                
+                justify-content: center;
+                
+            }
+           .paginator {
+                width: 100%;
+                justify-content: center;
+           }
+        }
+    }
+}
+
+
+@media(min-width: 1060px) {
+    section {
+        margin-top: -1.2rem;
+
+        article {
+            width: calc(100% - 16.5rem);
+            padding-left: 1.5rem;
+            margin-top: .5rem;
+
+            h2 {
+                margin-top: 0;
+            }
+
+            .users-info {
+                grid-template-columns: repeat(4, 13rem);
+                padding-left: 1rem;
+
+                > div {
+                    height: 8rem;
+
+                    h3 {
+                        font-size: .65rem;
+                    }
+
+                    h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    .savings {
+                        width: 10rem;
+                    }
+                    
+                }
+
+            }
+
+            th {
+                padding-inline: .8rem;
+            }
+            
+            th img {
+                margin-left: .5rem ;
+            }
+
+            td {
+                padding-inline: .8rem;
+            }
+            
+        }
+    }
+}
+
+

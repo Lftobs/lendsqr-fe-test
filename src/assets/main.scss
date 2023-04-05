@@ -1,0 +1,39 @@
+$blue : #213F7D;
+$red: rgba(228, 3, 59, 1);
+$light-red: rgba(228, 3, 59, .2);
+$green: rgba(57, 205, 204, 1);
+$s-green: rgba(57, 205, 98, 1);
+$s-bg: rgba(57, 205, 98, .1);
+$bg-green: rgba(57, 205, 204, .1);
+$text: rgba(84, 95, 125, 1);
+$light-text: rgb(84 95 125 / .1);
+$bg: rgb( 0 0 0 / .1);
+$yellow: rgb(233 178 0 / 1);
+$light-yellow: rgb( 233 178 0 / .1);
+$font: 'Avenir Next';
+$light-blue: rgba(33, 63, 125, 0.1);
+
+
+.loading {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $green;
+    font-size: 2rem;
+    font-weight: 500;
+    animation: .5s infinite alternate hover;
+}
+
+@keyframes hover {
+    from {
+        margin-top: 1rem;
+        opacity: 0;
+    }
+    
+    to {
+        margin-top: -3rem;
+        opacity: 1;
+    }
+}
