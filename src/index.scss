@@ -1,0 +1,15 @@
+@import './assets/main.scss';
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font;
+    cursor: default;
+}
+
+a {
+    all: unset;
+}
+  

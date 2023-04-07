@@ -1,0 +1,145 @@
+@import '../../assets/main.scss';
+
+
+
+.header1 {
+    height: 2.2rem;
+    margin-block: 1.1rem;   
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.main1 {
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+    width: 100%;
+    height: inherit;
+    padding-inline: 1rem;
+    font-family: $font;
+}
+
+.section1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    & .login-img {
+        width: 100%;
+        aspect-ratio: 2 / 1;
+        background-size: 100% 100%; 
+    }
+
+    & img {
+        width: 100%;
+        min-height: 100%;
+        display: block;
+        object-fit: fill;
+    }
+}
+
+
+
+.form1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+    & h2 {
+        font-size: 2.2rem;
+        margin-bottom: .5rem;
+        color: $blue;
+    }
+
+    & p {
+        margin-bottom: 1rem;
+    }
+
+    & input, span {
+        outline: none;
+        height: 2.5rem;
+        width: 100%;
+        border: 1px solid $light-text;
+        border-radius: .5rem;
+        margin-bottom: 1rem;
+        padding: .5rem;
+        padding-inline: 1rem;
+    }
+
+    & span {
+        padding: 0;
+        color: $green;
+
+        & input {
+            border: none;
+            width: 85%;
+            height: 100%;
+            margin-right: 2%;
+        }
+
+        & button {
+            all: unset;
+            width: 10%;
+            text-align: center;
+            border: none;
+            outline: none;
+        }
+    }
+
+    & small {
+        margin-bottom: 1.3rem;
+        color: $green;
+    }
+
+    & button[type="submit"] {
+        background: $green;
+        outline: none;
+        border: none;
+        border-radius: .5rem;
+        height: 3rem;
+        padding: .8rem;
+        color: white;
+    }
+    
+}
+
+@media(min-width: 760px){
+    .main1 {
+        padding: 1.5rem;
+    }
+    
+    .header1 {
+        margin-top: 2rem;
+    }
+    
+    .section1 {
+        flex-direction: row;
+        margin-top: 4rem;
+        width: 100%;
+        justify-content: center;
+        gap: 1.3rem;
+
+        &  .login-img {
+            width: 45%;
+        }
+    }
+
+    .form1 {
+        & input, span {
+            margin-bottom: 1.5rem;
+        }
+
+        & span input {
+            width: 82%;
+        }
+
+        & button[type="submit"] {
+            margin-top: 1.8rem;
+        }
+    }
+
+}

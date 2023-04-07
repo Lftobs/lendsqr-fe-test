@@ -1,0 +1,249 @@
+@import '../../assets/main.scss';
+
+
+section {
+    & .details-art {
+        min-height: 100vh;
+        width: 100%;
+        background: $bg;
+        padding: 1rem;
+        cursor: context-menu;
+        & h2 {
+            margin-top: 1.7rem;
+            color: $blue;
+            font-size: 2rem;
+        }
+
+        & .pdp {
+            & a {
+                display: flex;
+                gap: 1rem;
+            }
+
+            & h4 {
+                margin: 0;
+            }
+        }
+
+        & .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+
+            & .btn {
+                width: 40%;
+                height: 3rem;
+                border-radius: .7rem;
+                outline: none;
+                font-weight: 700;
+                text-transform: uppercase;
+                background: transparent;
+
+                &:nth-child(1) {
+                    border: 1px solid $red;
+                    color: $red;
+                }
+
+                &:nth-child(2) {
+                    border: 1px solid $green;
+                    color: $green;
+                }
+                
+            }
+        }
+
+        & .details{
+            margin-top: 2.3rem;
+            background: white;
+            & h3 {
+                color: $text;
+            }
+
+            & .profile-top {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                & small {
+                    text-transform: uppercase;
+                    font-weight: 500;
+                }
+
+                & .name{
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    padding: 1rem;
+                    
+                    & figure {
+    
+                        height: 5.5rem;
+                        aspect-ratio: 1;
+                        border-radius: 1rem;
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 1rem;
+                        }
+                    }
+                    
+                }
+
+                & .tier {
+                    padding: 1rem;
+                    padding-block: 0rem;
+
+                    & .stars {
+                        display: flex; 
+                        gap: .5rem;
+
+                        & img {
+                            height: 1.5rem;
+                            width: 1.5rem;
+                        }
+
+                        
+                    }
+
+                    & h3 {
+                        color: $blue;
+                    }
+                }
+
+                & .acc {
+                    padding: 1rem;
+
+                    & h2 {
+                        margin: 0;
+                    }
+                }
+
+                
+            }
+
+            & ul::-webkit-scrollbar {
+                visibility: 0;
+                background: transparent;
+            }
+
+            & ul {
+    
+                display: grid;
+                grid-template-columns: repeat(6, 8rem);
+                height: 2.2rem;
+                overflow-x: scroll;   
+                color: black;
+
+                & li {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    vertical-align: top;
+                    padding: 0;
+                    height: 100%;
+
+                    &:hover {
+                        color: $green;
+                        border: none;
+                        border-bottom: 2px solid $green;
+                    }
+                    
+                }
+                
+            }
+        }
+
+        & .user-details {
+            background: white;
+            margin-top: 2rem;
+            padding: 1rem;
+
+            & .h3{
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                color: $blue;
+                font-size: 1.3rem;
+                font-weight: 900;
+            }
+
+            & .p-details {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(12.3rem, auto));
+                gap: 2rem;
+                word-break: break-all;
+                margin-bottom: 2rem;
+
+                & div > h4 {
+                    margin-bottom: .5rem;
+                    font-size: 1rem;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                }
+
+                & div > h3 {
+                    font-weight: 600;
+                    font-size: 1.2rem;
+                    white-space: normal;
+                    color: $text;
+                }
+            }
+        }
+
+        
+
+       
+
+        
+    }
+    
+}
+
+@media(min-width: 1080px) {
+    section {
+        & .details-art {
+            width: calc(100% - 16.5rem);
+            padding-left: 1.5rem;
+
+            & .top {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                width: 95%;
+
+                &  h2 {
+                    margin: 0;
+                }
+
+                & .buttons {
+                    margin: 0;
+                    gap: 2rem;
+                    
+                    & .btn {
+                        width: 8rem;
+                    }
+                }
+            }
+            & .details {
+                & .profile-top {
+                    flex-direction: row;
+
+                    & .tier {
+                        padding-block: 1rem;
+
+                        & h3 {
+                            margin-top: .5rem;
+                        }
+                    }
+                }
+
+                
+            }
+            & ul::-webkit-scrollbar {
+                display: none;
+            }
+            
+        }
+}   }
