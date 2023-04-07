@@ -12,7 +12,7 @@ type Props = {}
 
 const DetailsPage = (props: Props) => {
     const [open, setOpen] = useState<boolean>(false)
-    const [loading, setLoading] = useState<Boolean>(true)
+    const [loading, setLoading] = useState<Boolean>(false)
     const [userData, setUserData] = useState<any[]>([])
 
     const {userId} = useParams()
@@ -20,13 +20,15 @@ const DetailsPage = (props: Props) => {
     
     
     useEffect(() => {
-      const data = async () => {
+        setLoading(true)
+        const data = async () => {
         const details = await getDataId(`${userId}`)
         console.log(details, 'data')
         setUserData(details)
+        setLoading(false)
       }
       data()
-      setLoading(false)
+      
     }, [userId])
   
     return (
@@ -35,7 +37,7 @@ const DetailsPage = (props: Props) => {
         <Nav isOpen={open} setIsOpen={setOpen} />
         <section>
           <Sidebar data={open} />
-          {loading? <div>loading</div> : <Detail user={userData} /> }
+          {loading? <div className="loading">loading</div> : <Detail user={userData} /> }
           
           
           

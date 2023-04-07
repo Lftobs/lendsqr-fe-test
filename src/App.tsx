@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Outlet } from "react-router-dom";
+//import { Outlet } from "react-router-dom";
 import './App.scss'
 import Nav from './components/Nav'
 import Sidebar from './components/Sidebar';
@@ -10,19 +10,19 @@ import { initDB, fillDb, getData } from "./utils/IndexDb";
 function App() {
   const [open, setOpen] = useState<boolean>(false)
   const [users, setusers] = useState<any[]>([])
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<Boolean>(false)
 
   useEffect(() => {
-    setLoading(true)
-    const getAll = async () => {
+      setLoading(true)
+      const getAll = async () => {
       await initDB()
       fillDb('test')
       const allUsers = await getData('test')
       setusers((prevState) => prevState = allUsers)
+      setLoading(false)
     }
     
     getAll()
-    setLoading(false)
   }, [])
   return (
     <main>
@@ -30,9 +30,9 @@ function App() {
       <Nav isOpen={open} setIsOpen={setOpen} />
       <section>
         <Sidebar data={open} />
-        {loading? <div>Loading</div> : <Users  Users={users} />}
+        {loading? <div className="loading">loading</div> : <Users  Users={users} />}
       </section>
-      <Outlet />
+      
     </main>
   )
 }

@@ -53,7 +53,7 @@ const Detail = ({user}: Props) => {
                 </div>
             </div>
             <ul>
-              <li>General details</li>
+              <li className="active">General details</li>
               <li>Documents</li>
               <li>Bank Details</li>
               <li>Loans</li>

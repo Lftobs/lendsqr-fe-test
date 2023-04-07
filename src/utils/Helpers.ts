@@ -1,6 +1,5 @@
 interface stat {
   [key: string]: string;
-
 }
 
 export const status: stat = {

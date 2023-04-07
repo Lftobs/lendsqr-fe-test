@@ -6,7 +6,6 @@ let version = 1
 const url = 'https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/'
 
 export enum Stores {
-    //Users = 'users',
     Test = 'test'
 }
 
@@ -80,7 +79,9 @@ export const getData = <T>(storeName: string): Promise<T[]> => {
             db = request.result
             const transaction = db.transaction([storeName], 'readwrite')
             const store = transaction.objectStore(storeName)
+            
             const res = store.getAll()
+            
             res.onsuccess = () => {
                 resolve(res.result)
             }
@@ -100,6 +101,7 @@ export const getDataId = <T>(id: string): Promise<T[]> => {
             db = request.result
             const transaction = db.transaction([Stores.Test], 'readwrite')
             const store = transaction.objectStore(Stores.Test)
+            
             const r = store.get(id)
             r.onsuccess = () => {
                 resolve(r.result)

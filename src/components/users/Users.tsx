@@ -12,7 +12,6 @@ import { randomStatus, status} from '../../utils/Helpers';
 
 const tableHead = ['Organisation', 'Username', 'Email', 'Phone Number', 'Date Added', 'Status']
 
-
 type Props = {
     Users: any[],
 }
@@ -29,9 +28,7 @@ const Users = ({Users}: Props) => {
     const itemsPerPage: number = 9
     const endOffset = itemOffset + itemsPerPage;
     const usersRecords = Users.slice(itemOffset, endOffset);
-    const pageCount = Math.ceil(Users.length / itemsPerPage);
-
-    const usersStatus = JSON.stringify(status)
+    const pageCount = Math.ceil(Users.length / itemsPerPage);  
 
     const handlePageClick = (event: any) => {
         const newOffset = (event.selected * itemsPerPage) % Users.length;
@@ -49,10 +46,6 @@ const Users = ({Users}: Props) => {
     }
 
     const navigate = useNavigate()
-
-    useEffect(() => {
-        
-    }, [])
    
     return (
     <article>
@@ -74,7 +67,7 @@ const Users = ({Users}: Props) => {
                     </thead>
                     <tbody>
                         {usersRecords?.map((user, index) =>{ 
-                            //type key = keyof typeof status
+                            
                             const userStatus = randomStatus(status)
                             const styleClass = status[userStatus]
                             return (
@@ -98,7 +91,7 @@ const Users = ({Users}: Props) => {
                                                     }
                                                 />   
                                             </div>
-                                        </td>
+                                    </td>
                                     </tr>
                                     )
                                 }

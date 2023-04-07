@@ -132,8 +132,15 @@ section {
                 display: grid;
                 grid-template-columns: repeat(6, 8rem);
                 height: 2.2rem;
-                overflow-x: scroll;   
+                overflow-x: overlay;   
                 color: black;
+
+                & .active {
+                    color: $green;
+                    border: none;
+                    border-bottom: 2px solid $green;
+                }
+
 
                 & li {
                     display: inline-flex;
@@ -164,8 +171,15 @@ section {
                 margin-top: 1rem;
                 margin-bottom: 1rem;
                 color: $blue;
-                font-size: 1.3rem;
+                font-size: 1rem;
                 font-weight: 900;
+            }
+
+            & .personal {
+                border-bottom: 2px solid $light-blue;
+            }
+            & .last-p {
+                border: none;
             }
 
             & .p-details {
@@ -177,27 +191,35 @@ section {
 
                 & div > h4 {
                     margin-bottom: .5rem;
-                    font-size: 1rem;
+                    font-size: .8rem;
                     font-weight: 300;
                     text-transform: uppercase;
                 }
 
                 & div > h3 {
                     font-weight: 600;
-                    font-size: 1.2rem;
+                    font-size: .9rem;
                     white-space: normal;
                     color: $text;
                 }
             }
         }
-
-        
-
-       
-
         
     }
     
+}
+@media screen and (max-width: 600px) {
+    section {
+       & .details-art {
+            & div > h4 {
+                font-size: 1rem !important;
+                
+            }
+            & div > h3 {
+                font-size: 1rem !important;
+            }
+       }
+    }
 }
 
 @media(min-width: 1080px) {
@@ -240,7 +262,10 @@ section {
                 }
 
                 
+
+                
             }
+            
             & ul::-webkit-scrollbar {
                 display: none;
             }
