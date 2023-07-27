@@ -1,16 +1,35 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Link, useLoaderData } from 'react-router-dom'
 import '../styles/Detail.scss'
-import { randomItem, relationship, residence} from '../../utils/Helpers';
+import { msgContext, randomItem, relationship, residence} from '../../utils/Helpers';
+import { updateStatus } from '../../utils/IndexDb';
 
 
 
-type Props = {
-  user: any
-}
+type Props = {}
 
-const Detail = ({user}: Props) => {
-  return (
+const Details = (props: Props) => {
+    const { user } = useLoaderData() as any
+    const message = useContext(msgContext)
+    const [activeStatus, setActiveStatus] = useState<string>('Activate user')
+    const [BlacklistStatus, setBlacklistStatus] = useState<string>('Blacklist user')
+    //console.log(user)
+
+    const handleMsg = async (status: string) => {
+      console.log(`start`)
+      message?.setMsg(`User status has been set to ${status}`)
+      message?.setIsMsg(true)
+      message?.setMsgStatus(status)
+      console.log(message?.msg)
+      setTimeout(() => {
+        message?.setIsMsg(false)
+        console.log(`stop`)
+      }, 3000);
+      
+    }
+
+    
+    return (
         <article className="details-art">
           <div className="pdp">
             <Link to='/'>
@@ -21,8 +40,19 @@ const Detail = ({user}: Props) => {
           <div className="top">
               <h2>User Details</h2>
               <div className="buttons">
-                  <button className='btn'>Blacklist User</button>
-                  <button className='btn'>Activate user</button>
+                  
+                  <button className={`btn ${BlacklistStatus=='Blacklist user'? 'blacklist': 'pending'}`} onClick={() => 
+                    BlacklistStatus =='Blacklist user'? 
+                    (updateStatus(`${user?.id}`, 'Blacklist', null ), setBlacklistStatus('Pending user'), handleMsg(`Blacklist`)) 
+                    : (updateStatus(`${user?.id}`, 'Pending', null), setBlacklistStatus('Blacklist user'), handleMsg(`Pending`) )}
+                  >{BlacklistStatus}</button>
+
+                  <button className={`btn ${activeStatus =='Activate user'? 'activate': 'inactivate'}`} onClick={() => 
+                    activeStatus=='Activate user'? 
+                    (updateStatus(`${user?.id}`, 'Active', null ), setActiveStatus('Deactivate user'), handleMsg(`Active`)) 
+                    : (updateStatus(`${user?.id}`, 'Inactive', null), setActiveStatus('Activate user'), handleMsg(`Inactive`) )}
+                  >{activeStatus}</button>
+                  
               </div>
           </div>
 
@@ -184,4 +214,4 @@ const Detail = ({user}: Props) => {
   )
 }
 
-export default Detail
+export default Details

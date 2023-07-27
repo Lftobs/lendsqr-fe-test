@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect }  from 'react'
 import '../styles/Users.scss'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLoaderData } from 'react-router-dom';
 import moment from 'moment';
 import Filter from './Filter';
 import ReactPaginate from "react-paginate";
@@ -13,16 +13,21 @@ import { randomStatus, status} from '../../utils/Helpers';
 const tableHead = ['Organisation', 'Username', 'Email', 'Phone Number', 'Date Added', 'Status']
 
 type Props = {
-    Users: any[],
+  
 }
 
-const Users = ({Users}: Props) => {
+const Users = (props: Props) => {
+    const {users} = useLoaderData() as any
+
     const [filter, setFilter] = useState<boolean>(false)
     const [modal, setModal] = useState<boolean>(false)
+    const [modalPos, setModalPos] =  useState<number[]>([])
+    const [Users, setUsers] = useState<any[]>(users)
     const [modalTop, setModalTop] =  useState<number>(0)
     const [modalLeft, setModalLeft] =  useState<number>(0)
     const [id, setId] = useState<number>(0)
     
+    console.log(Users)
     // for pagination
     const [itemOffset, setItemOffset] = useState(0);
     const itemsPerPage: number = 9
@@ -40,12 +45,14 @@ const Users = ({Users}: Props) => {
     const getPosition = (index: number, user_id: number) => {
        const ref = boxref.current[index]?.getBoundingClientRect()
        setId(user_id)
-       setModalTop(ref.top + window.scrollY - 20)
+       setModalPos([ref.top + window.scrollY - 20, ref.right + window.screenX - 180])
+       setModalTop(ref.top + window.scrollY + 5)
        setModalLeft(ref.right + window.screenX - 180)
        
     }
 
     const navigate = useNavigate()
+    
    
     return (
     <article>
@@ -59,19 +66,19 @@ const Users = ({Users}: Props) => {
                         <tr>
                             {tableHead.map((head, index) => 
                                     
-                                    <th><div>{head} <img src="/img/icons/drop-d.svg" onClick={() => {filter ? setFilter(!filter) : setFilter (!filter)}}/></div></th>
+                                    <th key={index}><div>{head} <img src="/img/icons/drop-d.svg" onClick={() => {filter ? setFilter(!filter) : setFilter (!filter)}}/></div></th>
                                 )
                             }
                             
                         </tr>
                     </thead>
                     <tbody>
-                        {usersRecords?.map((user, index) =>{ 
+                        {usersRecords?.map((user: any, index: number) =>{ 
                             
-                            const userStatus = randomStatus(status)
-                            const styleClass = status[userStatus]
+                            // const userStatus = randomStatus(status)
+                            // const styleClass = status[userStatus]
                             return (
-                                    <tr>
+                                    <tr key={user?.id}>
                                         <td onClick={() => navigate(`user-detail/${user?.id}`, {state: {data: {user}}})} >{user?.orgName}</td>
                                         <td>{`${user?.profile?.firstName} ${user?.profile?.firstName}`}</td>
                                         <td>{user?.email}</td>
@@ -79,8 +86,8 @@ const Users = ({Users}: Props) => {
                                         <td>{moment(user?.createdAt).format('MMM D, YYYY h:mm:a')}</td>
                                         <td>
                                             <div className="status-c">
-                                                <div className={`status ${styleClass}`}>{userStatus}</div>
-                                                <img src="img/icons/3dot.svg"
+                                                <div className={`status ${status[user?.status]}`}>{user?.status}</div>
+                                                <img src="/img/icons/3dot.svg"
                                                     alt="3-vertical dot icon"
                                                     key={user?.id}  
                                                     ref={(element) => boxref.current[index] = element!} 
@@ -110,8 +117,8 @@ const Users = ({Users}: Props) => {
         <div className="paginate">
             <div className="show">
                 showing 
-                <select>
-                    <option selected aria-readonly>{endOffset==108? '100': endOffset}</option>
+                <select defaultValue={'default'}>
+                    <option value='default' disabled aria-readonly>{endOffset==108? '100': endOffset}</option>
                 </select>
                 out of 100
             </div>
@@ -142,7 +149,7 @@ const Users = ({Users}: Props) => {
                
 
         </div>
-        <Modal top={modalTop} left={modalLeft} isModalOpen={modal} id={id}/>      
+        <Modal top={modalTop} left={modalLeft} isModalOpen={modal} id={id} users={setUsers}/>      
                 
     </article>
   )

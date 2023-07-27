@@ -10,14 +10,14 @@ import { initDB, fillDb, getData } from "./utils/IndexDb";
 function App() {
   const [open, setOpen] = useState<boolean>(false)
   const [users, setusers] = useState<any[]>([])
-  const [loading, setLoading] = useState<Boolean>(false)
+  const [loading, setLoading] = useState<Boolean>(true)
 
   useEffect(() => {
       setLoading(true)
       const getAll = async () => {
       await initDB()
-      fillDb('test')
-      const allUsers = await getData('test')
+      await fillDb()
+      const allUsers = await getData()
       setusers((prevState) => prevState = allUsers)
       setLoading(false)
     }
@@ -30,7 +30,7 @@ function App() {
       <Nav isOpen={open} setIsOpen={setOpen} />
       <section>
         <Sidebar data={open} />
-        {loading? <div className="loading">loading</div> : <Users  Users={users} />}
+        {/* { loading? <div className="loading">loading</div> : <Users  Users={users} />} */}
       </section>
       
     </main>

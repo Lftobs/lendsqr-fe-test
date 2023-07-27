@@ -33,7 +33,7 @@ section {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            
+            width: 100%;
             padding-top: 1rem;
 
             & h4 {
@@ -41,7 +41,7 @@ section {
             }
 
             & .active {
-                border-left: 2px solid $green;
+                border-left: 4px solid $green;
                 background-color: $bg-green;   
             }
 
@@ -55,7 +55,7 @@ section {
                 cursor: grab;
 
                 &:hover {
-                    border-left: 2px solid $green;
+                    border-left: 4px solid $green;
                     background-color: $bg-green;   
                 }
 

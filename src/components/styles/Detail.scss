@@ -31,25 +31,36 @@ section {
             margin-top: 1rem;
 
             & .btn {
-                width: 40%;
+                width: 41%;
                 height: 3rem;
                 border-radius: .7rem;
                 outline: none;
                 font-weight: 700;
                 text-transform: uppercase;
                 background: transparent;
-
-                &:nth-child(1) {
-                    border: 1px solid $red;
-                    color: $red;
-                }
-
-                &:nth-child(2) {
-                    border: 1px solid $green;
-                    color: $green;
-                }
-                
             }
+
+            & .blacklist {
+                border: 1px solid $red;
+                color: $red;
+            }
+
+            & .pending {
+                border: 1px solid $yellow;
+                color: $yellow;
+            }
+
+            & .activate {
+                border: 1px solid $green;
+                color: $green;
+            }
+
+            & .inactivate {
+                border: 1px solid $text;
+                color: $text;
+            }
+                
+            
         }
 
         & .details{
@@ -79,7 +90,8 @@ section {
     
                         height: 5.5rem;
                         aspect-ratio: 1;
-                        border-radius: 1rem;
+                        border-radius: 50%;
+                        overflow: hidden;
 
                         & img {
                             width: 100%;
@@ -232,7 +244,6 @@ section {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                
                 width: 95%;
 
                 &  h2 {
@@ -244,11 +255,14 @@ section {
                     gap: 2rem;
                     
                     & .btn {
-                        width: 8rem;
+                        width: 9.5rem;
                     }
                 }
             }
             & .details {
+                h2 {
+                    margin: 0;
+                }
                 & .profile-top {
                     flex-direction: row;
 

@@ -7,8 +7,8 @@ const Filter = ({filter}: Props) => {
     <div className="filter" data-open={filter}>
       <form>
               <label>Organisation</label>
-              <select id="org">
-                  <option selected>Select</option>
+              <select id="org" defaultValue={'default'}>
+                  <option value={'default'}>Select</option>
               </select>
               <label>Username</label>
               <input type="text" name="" id="" placeholder="User" />

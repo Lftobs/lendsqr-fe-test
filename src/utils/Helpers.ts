@@ -1,6 +1,19 @@
+import { createContext, useState } from 'react'
+
 interface stat {
   [key: string]: string;
 }
+
+export type msgContextType ={
+    msg: string | null,
+    setMsg: (msg: string) => void,
+    isMsg: boolean,
+    setIsMsg: (isMsg: boolean) => void,
+    msgStatus: string,
+    setMsgStatus: (msgStatus: string) => void
+  }
+//const [msg, setMsg] = useState<string>(`kkk`)
+export const msgContext = createContext<msgContextType | null>(null)
 
 export const status: stat = {
     Blacklist: 'r',
